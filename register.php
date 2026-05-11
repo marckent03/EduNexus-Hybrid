@@ -1,3 +1,27 @@
+<?php
+include 'connect.php';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $first_name = trim($_POST['firstName'] ?? '');
+    $last_name = trim($_POST['lastName'] ?? '');
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $connection->prepare("INSERT INTO tbluser (email, password, first_name, last_name, role) VALUES (?, ?, ?, ?, 'student')");
+    $stmt->bind_param('ssss', $email, $hashedPassword, $first_name, $last_name);
+
+    if ($stmt->execute()) {
+        $user_id = $connection->insert_id;
+        echo "<script>alert('Registered! Please login.'); window.location='login.php';</script>";
+    } else {
+        echo "Error: " . htmlspecialchars($stmt->error);
+    }
+
+    $stmt->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,16 +54,16 @@
                 <h1 class="auth-form-title">Create account</h1>
                 <p class="auth-form-sub">Sign up for EduNexus to join classes and start learning.</p>
 
-                <form id="registerForm">
+                <form id="registerForm" method="post">
                     <div class="form-group">
                         <label class="form-label" for="email">Email address</label>
-                        <input class="form-control" id="email" type="email" placeholder="you@university.edu" required />
+                        <input class="form-control" id="email" name="email" type="email" placeholder="you@university.edu" required />
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>
                         <div style="position: relative;">
-                            <input class="form-control" id="password" type="password" placeholder="Enter your password" required />
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password" required />
                             <button type="button" class="password-toggle" onclick="togglePasswordVisibility('password')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-500); display: flex; align-items: center; justify-content: center;">
                                 <svg class="eye-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
@@ -55,7 +79,7 @@
                     <div class="form-group">
                         <label class="form-label" for="confirmPassword">Confirm Password</label>
                         <div style="position: relative;">
-                            <input class="form-control" id="confirmPassword" type="password" placeholder="Re-enter your password" required />
+                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Re-enter your password" required />
                             <button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirmPassword')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-500); display: flex; align-items: center; justify-content: center;">
                                 <svg class="eye-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
@@ -70,18 +94,18 @@
 
                     <div class="form-group">
                         <label class="form-label" for="firstName">First Name</label>
-                        <input class="form-control" id="firstName" type="text" placeholder="Juan" required />
+                        <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Juan" required />
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="lastName">Last Name</label>
-                        <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" required />
+                        <input class="form-control" id="lastName" name="lastName" type="text" placeholder="Dela Cruz" required />
                     </div>
 
                     <button class="btn btn-primary btn-full" type="submit">Sign up</button>
                 </form>
 
-                <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+                <p class="auth-switch">Already have an account? <a href="login.php">Sign in</a></p>
             </div>
         </div>
 
@@ -104,24 +128,20 @@
             }
 
             document.getElementById('registerForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
-                const firstName = document.getElementById('firstName').value.trim();
-                const lastName = document.getElementById('lastName').value.trim();
 
                 if (password !== confirmPassword) {
+                    e.preventDefault();
                     alert('Passwords do not match.');
                     return;
                 }
 
                 if (password.length < 6) {
+                    e.preventDefault();
                     alert('Password must be at least 6 characters long.');
                     return;
                 }
-
-                alert('Account created successfully! Please log in with your new credentials.');
             });
         </script>
     </body>

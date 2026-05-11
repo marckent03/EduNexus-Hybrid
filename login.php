@@ -1,3 +1,34 @@
+<?php
+session_start();
+include 'connect.php';
+$loginError = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    $stmt = $connection->prepare("SELECT user_id, password, role FROM tbluser WHERE email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['role'] = $user['role'];
+            header('Location: dashboard.php');
+            exit;
+        }
+        $loginError = 'Wrong password';
+    } else {
+        $loginError = 'Email not found';
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,15 +61,15 @@
                 <h1 class="auth-form-title">Welcome back</h1>
                 <p class="auth-form-sub">Sign in to your EduNexus account to continue to your dashboard and classes.</p>
 
-                <form id="loginForm">
+                <form id="loginForm" method="post">
                     <div class="form-group">
                         <label class="form-label" for="email">Email address</label>
-                        <input class="form-control" id="email" type="email" placeholder="you@university.edu" required />
+                        <input class="form-control" id="email" name="email" type="email" placeholder="you@university.edu" required />
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>
-                        <input class="form-control" id="password" type="password" placeholder="Enter your password" required />
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password" required />
                     </div>
 
                     <div class="form-aux" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:13px; color:var(--text-500);">
@@ -50,23 +81,16 @@
                     </div>
 
                     <button class="btn btn-primary btn-full" type="submit">Log in</button>
+                    <?php if (!empty($loginError)): ?>
+                        <div class="form-error" style="color: var(--danger); margin-top: 16px; font-size: 14px;">
+                            <?php echo htmlspecialchars($loginError); ?>
+                        </div>
+                    <?php endif; ?>
                 </form>
 
-                <p class="auth-switch">Don’t have an account? <a href="register.html">Register</a></p>
+                <p class="auth-switch">Don’t have an account? <a href="register.php">Register</a></p>
             </div>
         </div>
-
-        <script>
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value.trim();
-                const password = document.getElementById('password').value;
-                if (email === 'admin@gmail.com' && password === '123456') {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    alert('Invalid credentials. Please try again.');
-                }
-            });
-        </script>
     </body>
 </html>
+

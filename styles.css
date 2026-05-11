@@ -598,24 +598,23 @@ select.form-control { appearance: none; cursor: pointer; }
 .footer {
   background: var(--text-900);
   color: rgba(255,255,255,0.6);
-  padding: 60px 0 28px;
+  padding: 40px 0 28px;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
 }
 
-.footer-brand-name {
-  font-size: 17px;
-  font-weight: 800;
-  color: #fff;
+.footer-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
 }
 
 .footer-brand-icon {
@@ -625,28 +624,19 @@ select.form-control { appearance: none; cursor: pointer; }
   display: flex; align-items: center; justify-content: center;
 }
 
-.footer-brand-desc {
-  font-size: 13.5px;
-  line-height: 1.65;
-  max-width: 260px;
-  color: rgba(255,255,255,0.5);
+.footer-links {
+  display: flex;
+  gap: 24px;
 }
-
-.footer-col-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.footer-links { display: flex; flex-direction: column; gap: 10px; }
 
 .footer-links a {
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
   transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: #fff;
 }
 
 .footer-links a:hover { color: #fff; }
@@ -994,7 +984,7 @@ select.form-control { appearance: none; cursor: pointer; }
 @media (max-width: 640px) {
   .container        { padding: 0 16px; }
   .nav-links        { display: none; }
-  .footer-grid      { grid-template-columns: 1fr; }
+  .footer-inner     { flex-direction: column; align-items: flex-start; gap: 20px; }
   .stats-row        { grid-template-columns: 1fr 1fr; }
   .team-grid        { grid-template-columns: 1fr; }
   .values-grid      { grid-template-columns: 1fr; }

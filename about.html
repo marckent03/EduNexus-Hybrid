@@ -10,43 +10,172 @@
     <body>
         <nav class="navbar" id="navbar">
             <div class="container nav-inner">
-                <a href="login.html" class="nav-brand">
+                <a href="login.php" class="nav-brand">
                     <div class="nav-brand-icon">
-                        <img src="open-book.png" alt="EduNexus Logo" style="width:18px; height:18px;" />
+                        <img src="images/open-book.png" alt="EduNexus Logo" style="width:18px; height:18px;" />
                     </div>
                     EduNexus Hybrid
                 </a>
                 <div class="nav-links">
-                    <a href="login.html">Login</a>
-                    <a href="register.html">Register</a>
+                    <a href="login.php">Login</a>
+                    <a href="register.php">Register</a>
                     <a href="about.html" class="active">About Us</a>
                     <a href="contact.html">Contact Us</a>
                 </div>
             </div>
         </nav>
 
-        <section class="section" style="padding-top: 80px;">
+        <section class="about-hero">
+            <div class="about-hero-bg"></div>
             <div class="container">
-                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <h1 style="font-size: 36px; font-weight: 700; color: var(--text-900); margin-bottom: 16px;">About EduNexus Hybrid</h1>
-                    <p style="font-size: 18px; color: var(--text-500); line-height: 1.6; margin-bottom: 32px;">
-                        A simple platform for hybrid education, connecting students and instructors seamlessly.
-                    </p>
-                    <div style="display: flex; gap: 16px; justify-content: center;">
-                        <a href="register.html" class="btn btn-primary">Get Started</a>
-                        <a href="contact.html" class="btn btn-ghost">Contact Us</a>
-                    </div>
+            <div style="max-width: 700px;">
+                <div class="section-label anim-up">Our Story</div>
+                <h1 class="section-title anim-up delay-1" style="font-size: clamp(34px, 5vw, 52px);">
+                Hybrid learning made simple<br>
+                <span class="display-serif" style="color:var(--primary);">for modern education</span>
+                </h1>
+                <p class="section-desc anim-up delay-2" style="font-size:17px;">
+                EduNexus Hybrid connects students and instructors in classrooms and online. Built for universities that need reliable hybrid learning tools.
+                </p>
+                <div style="display:flex; gap:14px; margin-top:32px;" class="anim-up delay-3">
+                <a href="register.html" class="btn btn-primary btn-lg">Join the Platform</a>
+                <a href="contact.html" class="btn btn-ghost btn-lg">Talk to Us</a>
                 </div>
+            </div>
             </div>
         </section>
 
-        <section class="section" style="background: var(--bg);">
+        <section style="padding: 0 0 72px;" class="section-sm">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="font-size: 28px; font-weight: 600; color: var(--text-900); margin-bottom: 20px; text-align: center;">Our Mission</h2>
-                    <p style="font-size: 16px; color: var(--text-500); line-height: 1.7; text-align: center;">
-                        We provide a clean, efficient platform for hybrid learning, focusing on simplicity and user experience.
-                    </p>
+            <div class="stats-row">
+                <div class="stat-card card anim-up">
+                <div class="stat-num">2,500+</div>
+                <div class="stat-label">Active Students</div>
+                </div>
+                <div class="stat-card card anim-up delay-1">
+                <div class="stat-num">150</div>
+                <div class="stat-label">Instructors</div>
+                </div>
+                <div class="stat-card card anim-up delay-2">
+                <div class="stat-num">95%</div>
+                <div class="stat-label">Platform Uptime</div>
+                </div>
+                <div class="stat-card card anim-up delay-3">
+                <div class="stat-num">3</div>
+                <div class="stat-label">Colleges Covered</div>
                 </div>
             </div>
+            </div>
         </section>
+
+        <section class="section" style="background: var(--bg-white);">
+            <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+                <div>
+                <div class="section-label">Our Mission</div>
+                <h2 class="section-title">Education that works — wherever you are</h2>
+                <p style="font-size:15px; color:var(--text-500); line-height:1.75; margin-bottom:20px;">
+                    We believe that geography and connectivity should never be barriers to quality education. EduNexus Hybrid gives students and instructors the tools they need to engage meaningfully.
+                </p>
+                <p style="font-size:15px; color:var(--text-500); line-height:1.75; margin-bottom:28px;">
+                    Our platform is built around three principles: <strong style="color:var(--text-900);">engagement</strong>, <strong style="color:var(--text-900);">transparency</strong>, and <strong style="color:var(--text-900);">accountability</strong>.
+                </p>
+                <div style="display:flex; gap:24px;">
+                    <div style="border-left:3px solid var(--primary); padding-left:16px;">
+                    <div style="font-size:22px; font-weight:800; color:var(--primary);">2021</div>
+                    <div style="font-size:13px; color:var(--text-500);">Founded</div>
+                    </div>
+                    <div style="border-left:3px solid var(--accent); padding-left:16px;">
+                    <div style="font-size:22px; font-weight:800; color:var(--accent);">5</div>
+                    <div style="font-size:13px; color:var(--text-500);">Core Modules</div>
+                    </div>
+                </div>
+                </div>
+                <div style="position:relative;">
+                <div style="background:linear-gradient(135deg,var(--primary-pale),#e0e7ff); border-radius:var(--radius-xl); padding:40px; border:1px solid var(--border);">
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                    <div style="display:flex; align-items:center; gap:14px; background:var(--bg-white); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow-sm);">
+                        <div style="width:44px;height:44px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0;">📡</div>
+                        <div>
+                        <div style="font-size:14px;font-weight:700;color:var(--text-900);margin-bottom:2px;">Live Hybrid Sessions</div>
+                        <div style="font-size:12.5px;color:var(--text-500);">Zoom-integrated · Real-time engagement tracking</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:14px; background:var(--bg-white); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow-sm);">
+                        <div style="width:44px;height:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0;">📊</div>
+                        <div>
+                        <div style="font-size:14px;font-weight:700;color:var(--text-900);margin-bottom:2px;">Engagement Analytics</div>
+                        <div style="font-size:12.5px;color:var(--text-500);">Polls, quizzes, and participation scores</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+            <div class="text-center" style="margin-bottom:52px;">
+                <div class="section-label">What Drives Us</div>
+                <h2 class="section-title">Our core values</h2>
+                <p class="section-desc">Every decision we make — from feature design to data policy — is guided by these principles.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card card card-hover anim-up">
+                <div class="value-icon">🎯</div>
+                <h3 class="value-title">Student-First Design</h3>
+                <p class="value-desc">We design every feature with the student experience in mind. If it doesn't help you learn better, we don't ship it.</p>
+                </div>
+                <div class="value-card card card-hover anim-up delay-1">
+                <div class="value-icon">🔒</div>
+                <h3 class="value-title">Privacy by Default</h3>
+                <p class="value-desc">Your academic data belongs to you. We never sell it, never share it, and we give you full visibility into how it's used.</p>
+                </div>
+                <div class="value-card card card-hover anim-up delay-2">
+                <div class="value-icon">⚡</div>
+                <h3 class="value-title">Reliable Performance</h3>
+                <p class="value-desc">95% uptime isn't a goal — it's a baseline. Downtime during class hours is unacceptable.</p>
+                </div>
+                <div class="value-card card card-hover anim-up delay-3">
+                <div class="value-icon">🤝</div>
+                <h3 class="value-title">Open Collaboration</h3>
+                <p class="value-desc">We work in partnership with institutions, not just for them. Your IT team has full visibility into integrations.</p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-brand-icon">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
+                    </svg>
+                    </div>
+                    EduNexus Hybrid
+                </div>
+                <div class="footer-links">
+                    <a href="login.php">Login</a>
+                    <a href="register.php">Register</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="footer-bottom">
+                <p>© 2026 EduNexus Hybrid. All rights reserved.</p>
+            </div>
+            </div>
+        </footer>
+
+        <script>
+            window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+            });
+        </script>
+    </body>
+</html>

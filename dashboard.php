@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+include 'connect.php';
+$role = $_SESSION['role'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +26,7 @@
                     EduNexus Hybrid
                 </a>
                 <div class="nav-links">
-                    <a href="dashboard.html" class="active">Dashboard</a>
+                    <a href="dashboard.php" class="active">Dashboard</a>
                     <a href="profile.php">Profile</a>
                 </div>
             </div>
@@ -41,6 +51,12 @@
                 <h2>Customer Insights</h2>
                 <p>Understand your customer base and behavior</p>
             </div>
+            <?php if ($role === 'admin'): ?>
+            <div class="card">
+                <h2>Admin Tools</h2>
+                <p><a href="admin_list.php" style="color: var(--primary);">Manage Admins</a></p>
+            </div>
+            <?php endif; ?>
         </section>
     </main>
 </body>

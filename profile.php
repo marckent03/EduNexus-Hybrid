@@ -17,7 +17,7 @@
                 </a>
                 <div class="nav-links">
                     <a href="dashboard.php">Dashboard</a>
-                    <a href="profile.html" class="active">Profile</a>
+                    <a href="profile.php" class="active">Profile</a>
                 </div>
             </div>
         </nav>
@@ -131,7 +131,7 @@
 
         <script>
             document.getElementById('logoutBtn').addEventListener('click', function() {
-                window.location.href = 'login.html';
+                window.location.href = 'login.php';
             });
         </script>
     </body>
